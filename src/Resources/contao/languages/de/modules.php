@@ -12,5 +12,5 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD']['listgrid'][0] = 'Listenraster';
-$GLOBALS['TL_LANG']['MOD']['listgrid'][1] = 'Raster für Listen wie z.B. Nachrichtenlisten verwalten';
+$GLOBALS['TL_LANG']['MOD']['list_grid'][0] = 'Listenraster';
+$GLOBALS['TL_LANG']['MOD']['list_grid'][1] = 'Raster für Listen wie z.B. Nachrichtenlisten verwalten';

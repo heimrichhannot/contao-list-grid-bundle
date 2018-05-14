@@ -9,9 +9,11 @@
  * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
  */
 
-namespace HeimrichHannot\ListGrid;
+namespace HeimrichHannot\ContaoListGridBundle\Model;
 
-class ListGridModel extends \Model
+use Contao\Model;
+
+class ListGridModel extends Model
 {
 	protected static $strTable = 'tl_listgrid';
 

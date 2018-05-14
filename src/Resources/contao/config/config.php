@@ -12,21 +12,18 @@
 /**
  * Back end modules
  */
-array_insert(
-	$GLOBALS['BE_MOD']['system'],
-	2,
-	[
-		'listgrid' => [
-			'tables' => ['tl_listgrid', 'tl_content'],
-			'icon'   => 'bundles/heimrichhannotcontaolistgrid/img/listgrid-icon.png',
-        ],
-    ]
-);
+
+$GLOBALS['BE_MOD']['system']['list_grid'] = [
+    'listgrid' => [
+        'tables' => ['tl_listgrid', 'tl_content'],
+        'icon'   => 'bundles/heimrichhannotcontaolistgrid/img/listgrid-icon.png',
+    ],
+];
 
 /**
  * Models
  */
-$GLOBALS['TL_MODELS']['tl_listgrid'] = 'HeimrichHannot\\ListGrid\\ListGridModel';
+$GLOBALS['TL_MODELS']['tl_listgrid'] = \HeimrichHannot\ContaoListGridBundle\Model\ListGridModel::class;
 
 /**
  * Content Elements
@@ -36,8 +33,7 @@ array_insert(
     0,
     ['listgrid' => [
         \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridElement::NAME =>
-            \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridElement::
-    ]
+            \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridElement::class]
     ]);
 
 /**

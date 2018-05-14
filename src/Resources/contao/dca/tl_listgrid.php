@@ -12,141 +12,116 @@
 /**
  * Table tl_slick_config
  */
-$GLOBALS['TL_DCA']['tl_listgrid'] = array(
+$GLOBALS['TL_DCA']['tl_listgrid'] = [
 
 	// Config
-	'config'   => array(
+	'config'   => [
 		'dataContainer'    => 'Table',
 		'enableVersioning' => true,
-		'ctable'           => array('tl_content'),
-		'sql'              => array(
-			'keys' => array(
+		'ctable'           => ['tl_content'],
+		'sql'              => [
+			'keys' => [
 				'id' => 'primary',
-			),
-		),
-	),
+            ],
+        ],
+    ],
 	// List
-	'list'     => array(
-		'sorting'           => array
-		(
+	'list'     => [
+		'sorting'           =>
+            [
 			'mode'        => 1,
 			'flag'        => 3,
-			'fields'      => array('sorting'),
+			'fields'      => ['sorting'],
 			'panelLayout' => 'filter;search,limit',
-			'fields'      => array('title'),
-		),
-		'label'             => array
-		(
-			'fields' => array('title'),
+			'fields'      => ['title'],
+            ],
+		'label'             =>
+            [
+			'fields' => ['title'],
 			'format' => '%s',
-		),
-		'global_operations' => array(
-			'all' => array(
+            ],
+		'global_operations' => [
+			'all' => [
 				'label'      => &$GLOBALS['TL_LANG']['MSC']['all'],
 				'href'       => 'act=select',
 				'class'      => 'header_edit_all',
 				'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="e"',
-			),
-		),
-		'operations'        => array(
-			'edit'       => array
-			(
+            ],
+        ],
+		'operations'        => [
+			'edit'       =>
+                [
 				'label' => &$GLOBALS['TL_LANG']['tl_listgrid']['edit'],
 				'href'  => 'table=tl_content',
 				'icon'  => 'edit.gif',
-			),
-			'editheader' => array
-			(
+                ],
+			'editheader' =>
+                [
 				'label' => &$GLOBALS['TL_LANG']['tl_listgrid']['editmeta'],
 				'href'  => 'act=edit',
 				'icon'  => 'header.gif',
-			),
-			'copy'       => array(
+                ],
+			'copy'       => [
 				'label' => &$GLOBALS['TL_LANG']['tl_listgrid']['copy'],
 				'href'  => 'act=copy',
 				'icon'  => 'copy.gif',
-			),
-			'delete'     => array(
+            ],
+			'delete'     => [
 				'label'      => &$GLOBALS['TL_LANG']['tl_listgrid']['delete'],
 				'href'       => 'act=delete',
 				'icon'       => 'delete.gif',
 				'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm']
 								. '\'))return false;Backend.getScrollOffset()"',
-			),
-			'show'       => array(
+            ],
+			'show'       => [
 				'label' => &$GLOBALS['TL_LANG']['tl_listgrid']['show'],
 				'href'  => 'act=show',
 				'icon'  => 'show.gif',
-			),
-		),
-	),
+            ],
+        ],
+    ],
 	// Palettes
-	'palettes' => array
-	(
-		'__selector__' => array('type'),
+	'palettes' =>
+        [
+		'__selector__' => ['type'],
 		'default'      => '{title_legend},type',
 		'news'         => '{title_legend},type,title',
-	),
+        ],
 	// Fields
-	'fields'   => array(
-		'id'      => array(
+	'fields'   => [
+		'id'      => [
 			'sql' => "int(10) unsigned NOT NULL auto_increment",
-		),
-		'sorting' => array(
+        ],
+		'sorting' => [
 			'sorting' => true,
 			'flag'    => 2,
 			'sql'     => "int(10) unsigned NOT NULL default '0'",
-		),
-		'tstamp'  => array
-		(
+        ],
+		'tstamp'  =>
+            [
 			'sql' => "int(10) unsigned NOT NULL default '0'",
-		),
-		'type'    => array
-		(
+            ],
+		'type'    =>
+            [
 			'label'            => &$GLOBALS['TL_LANG']['tl_listgrid']['type'],
 			'default'          => 'news',
 			'exclude'          => true,
 			'filter'           => true,
 			'inputType'        => 'select',
-			'options_callback' => array('tl_listgrid', 'getListGridConfigurations'),
+			'options_callback' => ['huh.listgrid.listener.callbacks', 'getListGridTypes'],
 			'reference'        => &$GLOBALS['TL_LANG']['LISTGRID_TYPES'],
-			'eval'             => array('helpwizard' => true, 'chosen' => true, 'submitOnChange' => true),
+			'eval'             => ['helpwizard' => true, 'chosen' => true, 'submitOnChange' => true],
 			'sql'              => "varchar(32) NOT NULL default ''",
-		),
-		'title'   => array(
+            ],
+		'title'   => [
 			'label'     => &$GLOBALS['TL_LANG']['tl_listgrid']['title'],
 			'exclude'   => true,
 			'search'    => true,
 			'sorting'   => true,
 			'flag'      => 1,
 			'inputType' => 'text',
-			'eval'      => array('mandatory' => true, 'maxlength' => 255),
+			'eval'      => ['mandatory' => true, 'maxlength' => 255],
 			'sql'       => "varchar(255) NOT NULL default ''",
-		),
-	),
-);
-
-class tl_listgrid extends Backend
-{
-
-	public function __construct()
-	{
-		parent::__construct();
-		$this->import('BackendUser', 'User');
-	}
-
-	/**
-	 * Return all news config types as array
-	 *
-	 * @return array
-	 */
-	public function getListGridConfigurations()
-	{
-		if (!is_array($GLOBALS['LISTGRID_TYPES'])) {
-			return array();
-		}
-
-		return array_keys($GLOBALS['LISTGRID_TYPES']);
-	}
-}
-
+        ],
+    ],
+];

@@ -12,7 +12,9 @@
 namespace HeimrichHannot\ContaoListGridBundle;
 
 
-class HeimrichHannotContaoListGridBundle
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class HeimrichHannotContaoListGridBundle extends Bundle
 {
 
 }

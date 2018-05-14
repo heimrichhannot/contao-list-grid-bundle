@@ -12,6 +12,10 @@
 namespace HeimrichHannot\ListGrid\Hooks;
 
 
+use Contao\Controller;
+use HeimrichHannot\ContaoListGridBundle\Model\ListGridContentModel;
+use HeimrichHannot\ContaoListGridBundle\Model\ListGridModel;
+
 class NewsHooks extends \Controller
 {
 	public function parseAllArticlesHook($arrArticles = array(), $blnAddArchive, $objModule)
@@ -30,9 +34,9 @@ class NewsHooks extends \Controller
 	{
 		if(!$objModule->addListGrid) return $arrArticles;
 
-		$objConfig = \HeimrichHannot\ListGrid\ListGridModel::findByPk($objModule->listGrid);
+		$objConfig = ListGridModel::findByPk($objModule->listGrid);
 
-		$objConfigItems = \HeimrichHannot\ListGrid\ListGridContentModel::findPublishedByPidAndTypes($objConfig->id);
+		$objConfigItems = ListGridContentModel::findPublishedByPidAndTypes($objConfig->id);
 
 		if($objConfigItems === null) return $arrArticles;
 
@@ -50,7 +54,7 @@ class NewsHooks extends \Controller
 				continue;
 			}
 
-			$arrArticlesList[] = \Controller::getContentElement($objConfigItems->id, $objModule->inColumn);
+			$arrArticlesList[] = Controller::getContentElement($objConfigItems->id, $objModule->inColumn);
 		}
 
 		return $arrArticlesList;
@@ -60,11 +64,11 @@ class NewsHooks extends \Controller
 	{
 		if(!$objModule->addListGrid) return;
 
-		$objConfig = \HeimrichHannot\ListGrid\ListGridModel::findByPk($objModule->listGrid);
+		$objConfig = ListGridModel::findByPk($objModule->listGrid);
 
 		if($objConfig === null) return;
 
-		$objConfigItems = \HeimrichHannot\ListGrid\ListGridContentModel::findPublishedByPidAndTypes($objConfig->id, array('listgrid_news'), 1, ($objTemplate->count - 1));
+		$objConfigItems = ListGridContentModel::findPublishedByPidAndTypes($objConfig->id, array('listgrid_news'), 1, ($objTemplate->count - 1));
 
 		if($objConfigItems === null) return;
 

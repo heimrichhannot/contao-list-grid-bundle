@@ -12,6 +12,8 @@
 namespace HeimrichHannot\ListGrid\Backend;
 
 
+use HeimrichHannot\ContaoListGridBundle\Model\ListGridModel;
+
 class DcaManager extends \Backend
 {
 
@@ -19,7 +21,7 @@ class DcaManager extends \Backend
 	{
 		$groups = array();
 
-		$objConfig = \HeimrichHannot\ListGrid\ListGridModel::findByPK($intPid);
+		$objConfig = ListGridModel::findByPK($intPid);
 
 		if($objConfig === null)
 		{
