@@ -1,0 +1,6 @@
+<ul>
+	<li><strong>Template: </strong><?= $this->news_template; ?></li>
+	<li><strong>Bildgröße: </strong><?= $this->imgSize; ?></li>
+</ul>
+
+
