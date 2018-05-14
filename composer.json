@@ -1,0 +1,50 @@
+{
+    "name": "heimrichhannot/contao-list-grid-bundle",
+    "description":"Contao bundle to create highly customizable list template that may use specific column set, news templates and image sizes for specific positions in a list.",
+    "keywords":["contao", "listgrid", "list", "grid", "newslist"],
+    "type": "contao-bundle",
+    "homepage":"https://github.com/heimrichhannot/contao-list-grid-bundle",
+    "license":"LGPL-3.0-or-later",
+    "authors":[
+        {
+            "name":"Heimrich & Hannot",
+            "email":"digitales@heimrich-hannot.de",
+            "homepage":"http://www.heimrich-hannot.de",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/heimrichhannot/contao-list-grid-bundle/issues"
+    },
+    "require": {
+        "php": "^7.1",
+        "contao/core-bundle": "^4.4",
+        "heimrichhannot/contao-list-bundle": "^1.0-beta"
+    },
+    "require-dev": {
+        "contao/test-case": "^1.1",
+        "contao/manager-plugin": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.2",
+        "phpunit/phpunit": "^6.5",
+        "phpunit/phpunit-mock-objects": "^4.0|^5.0",
+        "phpunit/php-token-stream": "^1.4|^2.0|^3.0",
+        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/message-factory": "^1.0.2",
+        "satooshi/php-coveralls": "^2.0",
+        "symfony/phpunit-bridge": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "HeimrichHannot\\ContaoListGridBundle\\": "src/"
+        },
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    },
+    "extra": {
+        "contao-manager-plugin": "HeimrichHannot\\ContaoListGridBundle\\ContaoManager\\Plugin"
+    }
+}
