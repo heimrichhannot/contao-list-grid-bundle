@@ -1,33 +1,39 @@
 <?php
-/**
- * Contao Open Source CMS
- *
+
+/*
  * Copyright (c) 2018 Heimrich & Hannot GmbH
  *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
 namespace HeimrichHannot\ContaoListGridBundle\EventListener;
-
 
 use Contao\Controller;
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
-use HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridElement;
+use Contao\Model\Collection;
+use HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder;
 use HeimrichHannot\ContaoListGridBundle\Model\ListGridContentModel;
 use HeimrichHannot\ContaoListGridBundle\Model\ListGridModel;
 use HeimrichHannot\ListBundle\Event\ListAfterParseItemsEvent;
-use HeimrichHannot\ListBundle\Event\ListBeforeParseItemsEvent;
-use HeimrichHannot\ListBundle\Event\ListBeforeRenderEvent;
 use HeimrichHannot\ListBundle\Event\ListBeforeRenderItemEvent;
 use HeimrichHannot\ListBundle\Event\ListCompileEvent;
-use HeimrichHannot\SubColumnsBootstrapBundle\Backend\Content;
 use Symfony\Bridge\Monolog\Logger;
 
 class ListEventListener
 {
+    /**
+     * @var ListGridModel|Adapter
+     */
+    protected $config;
+    /**
+     * @var ListGridContentModel|Collection|null
+     */
+    protected $templateItems;
+    /**
+     * @var ListGridContentModel|Collection|null
+     */
+    protected $templatePlaceholders = [];
     /**
      * @var ContaoFrameworkInterface
      */
@@ -36,11 +42,6 @@ class ListEventListener
      * @var Logger
      */
     private $logger;
-    /**
-     * @var ListGridModel|Adapter
-     */
-    protected $config;
-    protected $templateItems;
 
     public function __construct(ContaoFrameworkInterface $framework, Logger $logger)
     {
@@ -48,46 +49,61 @@ class ListEventListener
         $this->logger = $logger;
     }
 
-    public function onHuhListEventListCompile (ListCompileEvent $event)
+    public function onHuhListEventListCompile(ListCompileEvent $event)
     {
-        if ($event->getModule()->addListGrid && $event->getModule()->listGrid)
-        {
+        if ($event->getModule()->addListGrid && $event->getModule()->listGrid) {
             /** @var ListGridModel $config */
             $config = $this->framework->getAdapter(ListGridModel::class)->findByIdOrAlias($event->getModule()->listGrid);
-            if (!$config)
-            {
+            if (!$config) {
                 return;
             }
             $this->config = $config;
+            /* @var ListGridContentModel|Collection|null templateItems */
+            $this->templateItems = $this->framework->getAdapter(ListGridContentModel::class)->findPublishedByPidAndTypes($this->config->id);
+            if (!$this->templateItems) {
+                return;
+            }
+            foreach ($this->templateItems as $item) {
+                if (ContentListGridPlaceholder::NAME == $item->type) {
+                    $this->templatePlaceholders = $item;
+                }
+            }
+            reset($this->templatePlaceholders);
         }
-        return;
+    }
+
+    public function onHuhListEventItemBeforeRender(ListBeforeRenderItemEvent $event)
+    {
+        if (!$this->config || empty($this->templatePlaceholders)) {
+            return;
+        }
+        if (!$placeholder = current($this->templatePlaceholders)) {
+            $this->templatePlaceholders = [];
+
+            return;
+        }
+        $event->setTemplateName($placeholder->listGrid_placeholderTemplate);
+        if (false === next($this->templatePlaceholders)) {
+            $this->templatePlaceholders = [];
+        }
     }
 
     public function onHuhListEventListAfterParseItems(ListAfterParseItemsEvent $event)
     {
-        $templateItems = ListGridContentModel::findPublishedByPidAndTypes($this->config->id);
-        if (!$templateItems) {
+        if (!$this->config || !$this->templateItems) {
             return;
         }
         $items = [];
         $pointer = 0;
         $listItems = $event->getParsedItems();
-        foreach ($templateItems as $item)
-        {
-            if ($item->type == ContentListGridElement::NAME) {
+        foreach ($this->templateItems as $item) {
+            if (ContentListGridPlaceholder::NAME == $item->type) {
                 $items[] = $listItems[$pointer];
-                $pointer++;
+                ++$pointer;
                 continue;
             }
             $items[] = $this->framework->getAdapter(Controller::class)->getContentElement($item);
         }
         $event->setParsedItems($items);
-    }
-
-
-    public function onHuhListEventItemBeforeRender(ListBeforeRenderItemEvent $event)
-    {
-
-        return;
     }
 }

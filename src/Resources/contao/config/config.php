@@ -12,12 +12,9 @@
 /**
  * Back end modules
  */
-
 $GLOBALS['BE_MOD']['system']['list_grid'] = [
-    'listgrid' => [
-        'tables' => ['tl_listgrid', 'tl_content'],
-        'icon'   => 'bundles/heimrichhannotcontaolistgrid/img/listgrid-icon.png',
-    ],
+    'tables' => ['tl_listgrid', 'tl_content'],
+    'icon'   => 'bundles/heimrichhannotcontaolistgrid/img/listgrid-icon.png',
 ];
 
 /**
@@ -32,8 +29,8 @@ array_insert(
     $GLOBALS['TL_CTE'],
     0,
     ['listgrid' => [
-        \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridElement::NAME =>
-            \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridElement::class]
+        \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder::NAME =>
+            \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder::class]
     ]);
 
 /**
@@ -46,9 +43,3 @@ $GLOBALS['LISTGRID_TYPES'] = array
 		'types' => array('listgrid_news'),
 	),
 );
-
-/**
- * Hooks
- */
-//$GLOBALS['TL_HOOKS']['parseArticles'][]    = array('HeimrichHannot\ListGrid\Hooks\NewsHooks', 'parseArticlesHook');
-//$GLOBALS['TL_HOOKS']['parseAllArticles'][] = array('HeimrichHannot\ListGrid\Hooks\NewsHooks', 'parseAllArticlesHook');

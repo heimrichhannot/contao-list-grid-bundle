@@ -17,30 +17,30 @@ use HeimrichHannot\ContaoListGridBundle\Model\ListGridModel;
 class DcaManager extends \Backend
 {
 
-	public static function getConfigItemTypesByPid($intPid)
-	{
-		$groups = array();
-
-		$objConfig = ListGridModel::findByPK($intPid);
-
-		if($objConfig === null)
-		{
-			return $groups;
-		}
-
-		$arrAdded = array();
-
-		foreach ($GLOBALS['TL_CTE'] as $k=>$v)
-		{
-			foreach (array_keys($v) as $kk)
-			{
-				$groups[$k][] = $kk;
-				$arrAdded[] = $kk;
-			}
-		}
-		
-		return $groups;
-	}
+//	public static function getConfigItemTypesByPid($intPid)
+//	{
+//		$groups = array();
+//
+//		$objConfig = ListGridModel::findByPK($intPid);
+//
+//		if($objConfig === null)
+//		{
+//			return $groups;
+//		}
+//
+//		$arrAdded = array();
+//
+//		foreach ($GLOBALS['TL_CTE'] as $k=>$v)
+//		{
+//			foreach (array_keys($v) as $kk)
+//			{
+//				$groups[$k][] = $kk;
+//				$arrAdded[] = $kk;
+//			}
+//		}
+//
+//		return $groups;
+//	}
 
 	/**
 	 * Store initial values when creating a product

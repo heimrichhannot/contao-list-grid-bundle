@@ -1,0 +1,8 @@
+<div class="tl_gray">
+    <ul>
+        <li><strong>Template: </strong><?= $this->listGrid_placeholderTemplate; ?></li>
+        <li><strong>Bildgröße: </strong><?= $this->imgSize; ?></li>
+    </ul>
+</div>
+
+

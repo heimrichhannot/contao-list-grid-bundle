@@ -101,18 +101,6 @@ $GLOBALS['TL_DCA']['tl_listgrid'] = [
             [
 			'sql' => "int(10) unsigned NOT NULL default '0'",
             ],
-		'type'    =>
-            [
-			'label'            => &$GLOBALS['TL_LANG']['tl_listgrid']['type'],
-			'default'          => 'news',
-			'exclude'          => true,
-			'filter'           => true,
-			'inputType'        => 'select',
-			'options_callback' => ['huh.listgrid.listener.callbacks', 'getListGridTypes'],
-			'reference'        => &$GLOBALS['TL_LANG']['LISTGRID_TYPES'],
-			'eval'             => ['helpwizard' => true, 'chosen' => true, 'submitOnChange' => true],
-			'sql'              => "varchar(32) NOT NULL default ''",
-            ],
 		'title'   => [
 			'label'     => &$GLOBALS['TL_LANG']['tl_listgrid']['title'],
 			'exclude'   => true,

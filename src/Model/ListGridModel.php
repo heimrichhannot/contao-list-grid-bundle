@@ -1,29 +1,24 @@
 <?php
-/**
- * Contao Open Source CMS
+
+/*
+ * Copyright (c) 2018 Heimrich & Hannot GmbH
  *
- * Copyright (c) 2015 Heimrich & Hannot GmbH
- *
- * @package listgrid
- * @author  Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
 namespace HeimrichHannot\ContaoListGridBundle\Model;
 
 use Contao\Model;
 
+/**
+ * Class ListGridModel.
+ *
+ * @property int $id
+ * @property int $sorting
+ * @property int $tstamp
+ * @property string $title
+ */
 class ListGridModel extends Model
 {
-	protected static $strTable = 'tl_listgrid';
-
-	public static function findMultipleByTypes(array $arrTypes=array(), $arrOptions = array())
-	{
-		$t = static::$strTable;
-
-		$arrColumns[] = "$t.type IN('" . implode("','", $arrTypes) . "')";
-
-		return static::findBy($arrColumns, null, $arrOptions);
-	}
-
+    protected static $strTable = 'tl_listgrid';
 }
