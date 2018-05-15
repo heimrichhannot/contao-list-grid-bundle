@@ -19,7 +19,7 @@
     "require": {
         "php": "^7.1",
         "contao/core-bundle": "^4.4",
-        "heimrichhannot/contao-list-bundle": "^1.0-beta"
+        "heimrichhannot/contao-list-bundle": "^1.0.0-beta41"
     },
     "require-dev": {
         "contao/test-case": "^1.1",
@@ -46,5 +46,7 @@
     },
     "extra": {
         "contao-manager-plugin": "HeimrichHannot\\ContaoListGridBundle\\ContaoManager\\Plugin"
-    }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "beta"
 }

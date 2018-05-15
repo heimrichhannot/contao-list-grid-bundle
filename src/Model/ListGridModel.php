@@ -13,9 +13,9 @@ use Contao\Model;
 /**
  * Class ListGridModel.
  *
- * @property int $id
- * @property int $sorting
- * @property int $tstamp
+ * @property int    $id
+ * @property int    $sorting
+ * @property int    $tstamp
  * @property string $title
  */
 class ListGridModel extends Model
