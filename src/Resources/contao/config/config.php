@@ -31,15 +31,5 @@ array_insert(
     ['listgrid' => [
         \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder::NAME =>
             \HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder::class]
-    ]);
-
-/**
- * Listegrid Configurations
- */
-$GLOBALS['LISTGRID_TYPES'] = array
-(
-	'news' => array
-	(
-		'types' => array('listgrid_news'),
-	),
+    ]
 );

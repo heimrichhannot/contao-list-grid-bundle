@@ -1,6 +1,6 @@
 # List Grid Bundle
 
-Contao bundle to create highly customizable list templates that may use specific column sets, news templates and image sizes for specific positions in a list. 
+Contao bundle to create highly customizable list templates that may use specific column sets, templates and image sizes for specific positions in a list. 
 
 This bundle is an extension to [Contao List Bundle](https://github.com/heimrichhannot/contao-list-bundle).
 

@@ -14,8 +14,3 @@
  */
 $GLOBALS['TL_LANG']['CTE'][\HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder::NAME] = ['Listenraster Platzhalter'];
 $GLOBALS['TL_LANG']['CTE']['listgrid_news'][0]                                                                   = 'Nachricht';
-
-/**
- * Listgrid types
- */
-$GLOBALS['TL_LANG']['LISTGRID_TYPES']['news'] = 'Nachrichten';

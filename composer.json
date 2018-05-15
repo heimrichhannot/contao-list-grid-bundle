@@ -1,6 +1,6 @@
 {
     "name": "heimrichhannot/contao-list-grid-bundle",
-    "description":"Contao bundle to create highly customizable list template that may use specific column set, news templates and image sizes for specific positions in a list.",
+    "description":"Contao bundle to create highly customizable list templates that may use specific column sets, templates and image sizes for specific positions in a list.",
     "keywords":["contao", "listgrid", "list", "grid", "newslist"],
     "type": "contao-bundle",
     "homepage":"https://github.com/heimrichhannot/contao-list-grid-bundle",

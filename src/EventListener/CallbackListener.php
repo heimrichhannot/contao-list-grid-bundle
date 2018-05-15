@@ -41,25 +41,9 @@ class CallbackListener
         }
 
         foreach ($configs as $config) {
-            $strType = $GLOBALS['TL_LANG']['LISTGRID_TYPES'][$config->type];
-
-            $options[$strType ? $strType : $config->type][$config->id] = $config->title;
+            $options[$config->id] = $config->title;
         }
 
         return $options;
-    }
-
-    /**
-     * Return all news config types as array.
-     *
-     * @return array
-     */
-    public function getListGridTypes()
-    {
-        if (!is_array($GLOBALS['LISTGRID_TYPES'])) {
-            return [];
-        }
-
-        return array_keys($GLOBALS['LISTGRID_TYPES']);
     }
 }
