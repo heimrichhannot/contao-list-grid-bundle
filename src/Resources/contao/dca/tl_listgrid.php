@@ -84,8 +84,7 @@ $GLOBALS['TL_DCA']['tl_listgrid'] = [
 	'palettes' =>
         [
 		'__selector__' => ['type'],
-		'default'      => '{title_legend},type',
-		'news'         => '{title_legend},type,title',
+		'default'      => '{title_legend},title'
         ],
 	// Fields
 	'fields'   => [

@@ -12,4 +12,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class HeimrichHannotContaoListGridBundle extends Bundle
 {
+    const BE_MOD_LISTGRID = 'list_grid';
 }
