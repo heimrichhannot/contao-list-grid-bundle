@@ -11,9 +11,6 @@ namespace HeimrichHannot\ContaoListGridBundle\EventListener;
 use Contao\Controller;
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
-use Contao\FilesModel;
-use Contao\FrontendTemplate;
-use Contao\Image;
 use Contao\Model\Collection;
 use Contao\System;
 use HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder;
@@ -122,39 +119,6 @@ class ListEventListener
         $templateData['listGrid']['addImage'] = true;
 
         $event->setTemplateData($templateData);
-
-//        $item = $event->getItem()->getRaw();
-//        $item['size'] = $placeholder->size;
-//        $templateData = $event->getTemplateData();
-//
-//        $item = $event->getItem();
-//        $elements = $item->getManager()->getListConfigElementRegistry()->;
-//
-//
-//        System::getContainer()->get('huh.utils.image')->addToTemplateData($placeholder->imageSelector, $placeholder->imageField,$event->getTemplateData(), $item);
-
-//        $templateData = $event->getTemplateData();
-//        $templateData['listGrid']['addImage'] = false;
-//        if ($templateData['raw']['addImage'])
-//        {
-//            if (!$file = FilesModel::findByUuid($templateData['raw']['singleSRC']))
-//            {
-//                return;
-//            }
-//            $imageTemplate = new FrontendTemplate('picture_default');
-//            $data = [
-//                'singleSRC' => $file->path,
-//                'size' => $placeholder->size
-//            ];
-//            Controller::addImageToTemplate($imageTemplate, $data);
-//            $imageTemplate->setData($imageTemplate->picture);
-//            $imageHtml = $imageTemplate->parse();
-//
-//            $templateData['listGrid']['addImage'] = true;
-//            $templateData['listGrid']['imageHtml'] = $imageHtml;
-//            $templateData['listGrid']['picture'] = $imageTemplate->getData();
-//        }
-//        $event->setTemplateData($templateData);
     }
 
     public function onHuhListEventListAfterParseItems(ListAfterParseItemsEvent $event)
