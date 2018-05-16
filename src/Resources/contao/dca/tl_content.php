@@ -9,6 +9,8 @@
  * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
  */
 
+\Contao\Controller::loadDataContainer('tl_list_config_element');
+
 $dc = &$GLOBALS['TL_DCA']['tl_content'];
 
 /**
@@ -16,9 +18,11 @@ $dc = &$GLOBALS['TL_DCA']['tl_content'];
  */
 if (Input::get('do') == 'list_grid')
 {
-    $dc['config']['ptable']                   = 'tl_listgrid';
+    $dc['config']['ptable'] = 'tl_listgrid';
 
-    $dc['palettes'][\HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder::NAME] = '{title_legend},type;{template_legend},listGrid_placeholderTemplate, size';
+    $dc['palettes'][\HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder::NAME] = '{title_legend},type;
+    {template_legend},listGrid_placeholderTemplate;
+    {image_legend},size';
 
 } else
 {
@@ -39,5 +43,9 @@ $arrFields = [
         'sql'              => "varchar(128) NOT NULL default ''",
     ],
 ];
+
+$arrFields['listGrid_imageSelectorField']     = $GLOBALS['TL_DCA']['tl_list_config_element']['fields']['imageSelectorField'];
+$arrFields['listGrid_imageField']             = $GLOBALS['TL_DCA']['tl_list_config_element']['fields']['imageField'];
+$arrFields['listGrid_placeholderImage']       = $GLOBALS['TL_DCA']['tl_list_config_element']['fields']['placeholderImage'];
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);

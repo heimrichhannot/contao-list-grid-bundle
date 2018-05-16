@@ -12,7 +12,6 @@
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_listgrid']['title'] = array('Titel', 'Bitte geben Sie einen Titel an.');
-$GLOBALS['TL_LANG']['tl_listgrid']['type'] = array('Typ', 'Bitte wählen Sie den Typ des Listenrasters.');
 
 /**
  * Legends

@@ -12,4 +12,4 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD'][\HeimrichHannot\ContaoListGridBundle\HeimrichHannotContaoListGridBundle::BE_MOD_LISTGRID][0] = ['Listenraster', 'Raster für Listen wie z.B. Nachrichtenlisten verwalten'];
+$GLOBALS['TL_LANG']['MOD'][\HeimrichHannot\ContaoListGridBundle\HeimrichHannotContaoListGridBundle::BE_MOD_LISTGRID] = ['Listenraster', 'Raster für Listen wie z.B. Nachrichtenlisten verwalten'];

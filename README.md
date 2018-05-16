@@ -1,4 +1,8 @@
 # List Grid Bundle
+[![](https://img.shields.io/packagist/v/heimrichhannot/contao-list-grid-bundle.svg)](https://packagist.org/packages/heimrichhannot/contao-list-grid-bundle)
+[![](https://img.shields.io/packagist/dt/heimrichhannot/contao-list-grid-bundle.svg)](https://packagist.org/packages/heimrichhannot/contao-list-grid-bundle)
+[![Build Status](https://travis-ci.org/heimrichhannot/contao-list-grid-bundle.svg?branch=master)](https://travis-ci.org/heimrichhannot/contao-list-grid-bundle)
+[![Coverage Status](https://coveralls.io/repos/github/heimrichhannot/contao-list-grid-bundle/badge.svg?branch=master)](https://coveralls.io/github/heimrichhannot/contao-list-grid-bundle?branch=master)
 
 Contao bundle to create highly customizable list templates that may use specific column sets, templates and image sizes for specific positions in a list. 
 
