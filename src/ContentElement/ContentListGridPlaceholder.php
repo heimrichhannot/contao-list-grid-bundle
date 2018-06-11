@@ -20,11 +20,12 @@ class ContentListGridPlaceholder extends ContentElement
 
     public function generate()
     {
-        $trans = System::getContainer()->get('translator');
         if (TL_MODE == 'BE') {
-            $objTemplate = new BackendTemplate('be_listgrid_placeholder');
-            $objTemplate->setData($this->objModel->row());
-            $objTemplate->wildcard = '### '.Utf8::strtoupper($trans->trans('huh.listgrid.cte.placeholder')).' ###';
+            $container = System::getContainer();
+            $trans = $container->get('translator');
+            $template = $container->get('contao.framework')->createInstance(BackendTemplate::class, ['be_listgrid_placeholder']);
+            $template->setData($this->objModel->row());
+            $template->wildcard = '### '.Utf8::strtoupper($trans->trans('huh.listgrid.cte.placeholder')).' ###';
 
             if ($this->size = !'') {
                 $arrImageSizes = System::getContainer()->get('contao.image.image_sizes')->getAllOptions();
@@ -32,13 +33,13 @@ class ContentListGridPlaceholder extends ContentElement
                 $arrSize = StringUtil::deserialize($this->objModel->size);
 
                 if (isset($arrSize[2]) && isset($arrImageSizes['image_sizes'][$arrSize[2]])) {
-                    $objTemplate->imgSize = $arrImageSizes['image_sizes'][$arrSize[2]];
+                    $template->imgSize = $arrImageSizes['image_sizes'][$arrSize[2]];
                 }
             }
 
-            $objTemplate->href = 'contao?do=themes&amp;table=tl_module&amp;act=edit&amp;id='.$this->id;
+            $template->href = 'contao?do=themes&amp;table=tl_module&amp;act=edit&amp;id='.$this->id;
 
-            return $objTemplate->parse();
+            return $template->parse();
         }
 
         return parent::generate();

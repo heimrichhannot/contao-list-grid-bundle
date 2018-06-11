@@ -12,7 +12,6 @@ use Contao\Controller;
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\Model\Collection;
-use Contao\System;
 use HeimrichHannot\ContaoListGridBundle\ContentElement\ContentListGridPlaceholder;
 use HeimrichHannot\ContaoListGridBundle\Model\ListGridContentModel;
 use HeimrichHannot\ContaoListGridBundle\Model\ListGridModel;
@@ -20,6 +19,7 @@ use HeimrichHannot\ListBundle\Backend\ListConfigElement;
 use HeimrichHannot\ListBundle\Event\ListAfterParseItemsEvent;
 use HeimrichHannot\ListBundle\Event\ListBeforeRenderItemEvent;
 use HeimrichHannot\ListBundle\Event\ListCompileEvent;
+use HeimrichHannot\UtilsBundle\Image\ImageUtil;
 use Symfony\Bridge\Monolog\Logger;
 
 class ListEventListener
@@ -44,11 +44,16 @@ class ListEventListener
      * @var Logger
      */
     private $logger;
+    /**
+     * @var ImageUtil
+     */
+    private $imageUtil;
 
-    public function __construct(ContaoFrameworkInterface $framework, Logger $logger)
+    public function __construct(ContaoFrameworkInterface $framework, Logger $logger, ImageUtil $imageUtil)
     {
         $this->framework = $framework;
         $this->logger = $logger;
+        $this->imageUtil = $imageUtil;
     }
 
     public function onHuhListEventListCompile(ListCompileEvent $event)
@@ -98,6 +103,7 @@ class ListEventListener
         if (!$listImageConfig) {
             return;
         }
+        $templateData['listGrid']['addImage'] = false;
         if (isset($templateData['images'][$listImageConfig->imageField])
             && $templateData['images'][$listImageConfig->imageField][$listImageConfig->imageSelectorField]) {
             $imageConfig = [
@@ -105,11 +111,14 @@ class ListEventListener
                 $listImageConfig->imageField => $templateData['images'][$listImageConfig->imageField][$listImageConfig->imageField],
                 'size' => $placeholder->size,
             ];
+            $this->imageUtil->addToTemplateData(
+                $listImageConfig->imageField,
+                $listImageConfig->imageSelectorField,
+                $templateData['images'][$listImageConfig->imageField],
+                $imageConfig);
+
+            $templateData['listGrid']['addImage'] = true;
         }
-
-        System::getContainer()->get('huh.utils.image')->addToTemplateData($listImageConfig->imageField, $listImageConfig->imageSelectorField, $templateData['images'][$listImageConfig->imageField], $imageConfig);
-
-        $templateData['listGrid']['addImage'] = true;
 
         $event->setTemplateData($templateData);
     }

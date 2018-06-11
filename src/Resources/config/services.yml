@@ -8,4 +8,4 @@ services:
       - { name: kernel.event_listener, event: huh.list.event.list_after_parse_items }
       - { name: kernel.event_listener, event: huh.list.event.list_compile }
       - { name: kernel.event_listener, event: huh.list.event.item_before_render }
-    arguments: ['@contao.framework', '@monolog.logger.contao']
+    arguments: ['@contao.framework', '@monolog.logger.contao', '@huh.utils.image']
