@@ -19,7 +19,7 @@
     "require": {
         "php": "^7.1",
         "contao/core-bundle": "^4.4",
-        "heimrichhannot/contao-list-bundle": "^1.0.0-beta41"
+        "heimrichhannot/contao-list-bundle": "^1.0-beta"
     },
     "require-dev": {
         "contao/test-case": "^1.1",

@@ -53,9 +53,10 @@ class ListEventListener
 
     public function onHuhListEventListCompile(ListCompileEvent $event)
     {
-        if ($event->getModule()->addListGrid && $event->getModule()->listGrid) {
+        if ($event->getListConfig()->listGrid > 0) {
+            $listConfig = $event->getListConfig();
             /** @var ListGridModel $config */
-            $config = $this->framework->getAdapter(ListGridModel::class)->findByIdOrAlias($event->getModule()->listGrid);
+            $config = $this->framework->getAdapter(ListGridModel::class)->findByIdOrAlias($listConfig->listGrid);
             if (!$config) {
                 return;
             }
@@ -70,9 +71,8 @@ class ListEventListener
                     $this->templatePlaceholders[] = $item;
                 }
             }
-            $config = $event->getListConfig();
             $config->perPage = count($this->templatePlaceholders);
-            $event->setListConfig($config);
+            $event->setListConfig($listConfig);
             reset($this->templatePlaceholders);
         }
     }
@@ -94,10 +94,7 @@ class ListEventListener
         $event->setTemplateName($placeholder->listGrid_placeholderTemplate);
 
         $templateData = $event->getTemplateData();
-        $listImageConfig = $event->getItem()->getManager()->getListConfigElementRegistry()->findOneBy(
-            ['pid=?', 'type=?'],
-            [$event->getItem()->getManager()->getListConfig()->id, ListConfigElement::TYPE_IMAGE]
-        );
+        $listImageConfig = $event->getItem()->getManager()->getListConfigElementRegistry()->findOneBy(['pid=?', 'type=?'], [$event->getItem()->getManager()->getListConfig()->id, ListConfigElement::TYPE_IMAGE]);
         if (!$listImageConfig) {
             return;
         }
@@ -110,11 +107,7 @@ class ListEventListener
             ];
         }
 
-        System::getContainer()->get('huh.utils.image')->addToTemplateData(
-            $listImageConfig->imageField,
-            $listImageConfig->imageSelectorField,
-            $templateData['images'][$listImageConfig->imageField],
-            $imageConfig);
+        System::getContainer()->get('huh.utils.image')->addToTemplateData($listImageConfig->imageField, $listImageConfig->imageSelectorField, $templateData['images'][$listImageConfig->imageField], $imageConfig);
 
         $templateData['listGrid']['addImage'] = true;
 
