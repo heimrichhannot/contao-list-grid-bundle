@@ -58,28 +58,30 @@ class ListEventListener
 
     public function onHuhListEventListCompile(ListCompileEvent $event)
     {
-        if ($event->getListConfig()->listGrid > 0) {
-            $listConfig = $event->getListConfig();
-            /** @var ListGridModel $config */
-            $config = $this->framework->getAdapter(ListGridModel::class)->findByIdOrAlias($listConfig->listGrid);
-            if (!$config) {
-                return;
-            }
-            $this->config = $config;
-            /* @var ListGridContentModel|Collection|null templateItems */
-            $this->templateItems = $this->framework->getAdapter(ListGridContentModel::class)->findPublishedByPidAndTypes($this->config->id);
-            if (!$this->templateItems) {
-                return;
-            }
-            foreach ($this->templateItems as $item) {
-                if (ContentListGridPlaceholder::NAME == $item->type) {
-                    $this->templatePlaceholders[] = $item;
-                }
-            }
-            $config->perPage = count($this->templatePlaceholders);
-            $event->setListConfig($listConfig);
-            reset($this->templatePlaceholders);
+        if ($event->getListConfig()->listGrid < 1) {
+            return;
         }
+
+        $listConfig = $event->getListConfig();
+        /** @var ListGridModel $config */
+        $config = $this->framework->getAdapter(ListGridModel::class)->findByIdOrAlias($listConfig->listGrid);
+        if (!$config) {
+            return;
+        }
+        $this->config = $config;
+        /* @var ListGridContentModel|Collection|null templateItems */
+        $this->templateItems = $this->framework->getAdapter(ListGridContentModel::class)->findPublishedByPidAndTypes($this->config->id);
+        if (!$this->templateItems) {
+            return;
+        }
+        foreach ($this->templateItems as $item) {
+            if (ContentListGridPlaceholder::NAME == $item->type) {
+                $this->templatePlaceholders[] = $item;
+            }
+        }
+        $config->perPage = count($this->templatePlaceholders);
+        $event->setListConfig($listConfig);
+        reset($this->templatePlaceholders);
     }
 
     public function onHuhListEventItemBeforeRender(ListBeforeRenderItemEvent $event)
@@ -125,12 +127,13 @@ class ListEventListener
 
     public function onHuhListEventListAfterParseItems(ListAfterParseItemsEvent $event)
     {
-        if (!$this->config || !$this->templateItems) {
+        if ($event->getListConfig()->listGrid < 1 || !$this->config || !$this->templateItems) {
             return;
         }
         $items = [];
         $pointer = 0;
         $listItems = $event->getParsedItems();
+
         foreach ($this->templateItems as $item) {
             if (ContentListGridPlaceholder::NAME == $item->type) {
                 $items[] = $listItems[$pointer];
