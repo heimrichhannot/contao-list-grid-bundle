@@ -11,7 +11,7 @@ This bundle is an extension to [Contao List Bundle](https://github.com/heimrichh
 ## Features
 
 * create a grid template with content elements for your list from contao backend
-* activate from module (comes with build in support for list module, other modules with list support can be used by updated the palette, see Developers section.)
+* activate from list config
 
 ## Requirements
 
@@ -23,19 +23,4 @@ This bundle is an extension to [Contao List Bundle](https://github.com/heimrichh
 
 1. Create a new list grid (Backend -> System -> List grid)
 2. Add content elements as you like. Add placeholder content element where you want list items to display and set the template they should use.
-3. Active List Grid in your module config and select the list grid you configured.
-
-## Developers
-
-### Templates
-
-You can use every list item template. Please see the [Contao List Bundle Documentation](https://github.com/heimrichhannot/contao-list-bundle) how to add templates.
-
-### Add grid to your frontend module
-
-Add `addListGrid` to your module palette.
-
-Example:
-```
-str_replace('listConfig;', 'listConfig,addListGrid;', $dc['palettes']['your_module']);
-```
+3. Active List Grid in your list config and select the list grid you configured.
