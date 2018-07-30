@@ -2,15 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2018-07-30
+
+### Fixed
+- php cs fixer config
+- gitignore -> vendor
+
 ## [0.1.2] - 2018-07-23
 
-#### Fixed
+### Fixed
 - perPage count not updated correctly
 - fixed readme
 
 ## [0.1.1] - 2018-06-29
 
-#### Fixed
+### Fixed
 
 - endless recursion
 
