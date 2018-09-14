@@ -79,7 +79,7 @@ class ListEventListener
                 $this->templatePlaceholders[] = $item;
             }
         }
-        $listConfig->perPage = count($this->templatePlaceholders);
+        $listConfig->perPage = \count($this->templatePlaceholders);
         $event->setListConfig($listConfig);
         reset($this->templatePlaceholders);
     }

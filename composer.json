@@ -28,10 +28,10 @@
         "heimrichhannot/contao-list-bundle": "^1.0-beta"
     },
     "require-dev": {
-        "contao/test-case": "^1.1",
+        "contao/test-case": "1.1.*",
         "contao/manager-plugin": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.2",
-        "phpunit/phpunit": "^6.5",
+        "phpunit/phpunit": ">=6.0 <6.5",
         "phpunit/phpunit-mock-objects": "^4.0|^5.0",
         "phpunit/php-token-stream": "^1.4|^2.0|^3.0",
         "php-http/guzzle6-adapter": "^1.1",
@@ -49,6 +49,11 @@
             "src/Resources/contao/languages/",
             "src/Resources/contao/templates/"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HeimrichHannot\\ContaoListGridBundle\\Test\\": "tests/"
+        }
     },
     "extra": {
         "contao-manager-plugin": "HeimrichHannot\\ContaoListGridBundle\\ContaoManager\\Plugin"

@@ -35,7 +35,7 @@ class ListGridContentModel extends ContentModel
 
         $arrColumns = ["$t.pid=? AND $t.ptable=?"];
 
-        if (is_array($types) && !empty($types)) {
+        if (\is_array($types) && !empty($types)) {
             $arrColumns[] = "$t.type IN('".implode("','", $types)."')";
         }
 

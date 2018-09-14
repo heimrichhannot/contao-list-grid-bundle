@@ -16,16 +16,16 @@ class ContentListGridPlaceholder extends ContaoTestCase
 {
     public function testGenerateFe()
     {
-        if (!defined('TL_MODE')) {
-            define('TL_MODE', 'FE');
+        if (!\defined('TL_MODE')) {
+            \define('TL_MODE', 'FE');
         }
         $this->addToAssertionCount(1);
     }
 
     public function skiptestGenerateBe()
     {
-        if (!defined('TL_MODE')) {
-            define('TL_MODE', 'BE');
+        if (!\defined('TL_MODE')) {
+            \define('TL_MODE', 'BE');
         }
         $element = $this->getMockBuilder(self::class)->setMethods(['generate'])->disableOriginalConstructor()->getMock();
         $container = $this->mockContainer();
