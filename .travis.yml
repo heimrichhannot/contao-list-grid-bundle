@@ -25,8 +25,9 @@ matrix:
   fast_finish: true
 before_install:
 - if [[ "$COVERAGE" != "1" ]]; then phpenv config-rm xdebug.ini || true; fi
+- composer require contao/core-bundle:${CONTAO_VERSION} --no-update
 install:
-- composer require contao/core-bundle:${CONTAO_VERSION}
+- composer update $COMPOSER_FLAGS --no-interaction --no-suggest
 notifications:
   email:
     recipients:
