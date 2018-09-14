@@ -14,7 +14,7 @@ use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Config\ConfigInterface;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use HeimrichHannot\ContaoListGridBundle\HeimrichHannotContaoListGridBundle;
-use HeimrichHannot\ListBundle\Backend\ListBundle;
+use HeimrichHannot\ListBundle\HeimrichHannotContaoListBundle;
 
 class Plugin implements BundlePluginInterface
 {
@@ -30,7 +30,7 @@ class Plugin implements BundlePluginInterface
         return [
             BundleConfig::create(HeimrichHannotContaoListGridBundle::class)->setLoadAfter([
                 ContaoCoreBundle::class,
-                ListBundle::class,
+                HeimrichHannotContaoListBundle::class,
             ]),
         ];
     }

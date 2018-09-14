@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4] - 2018-09-14
+
+### Fixed
+- used wrong class in `Plugin::setLoadAfter` for List bundle
+
 ## [0.1.3] - 2018-07-30
 
 ### Fixed
