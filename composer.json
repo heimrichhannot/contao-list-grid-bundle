@@ -1,5 +1,6 @@
 {
     "name": "heimrichhannot/contao-list-grid-bundle",
+    "type": "contao-bundle",
     "description": "Contao bundle to create highly customizable list templates that may use specific column sets, templates and image sizes for specific positions in a list.",
     "keywords": [
         "contao",
@@ -8,14 +9,13 @@
         "grid",
         "newslist"
     ],
-    "type": "contao-bundle",
-    "homepage": "https://github.com/heimrichhannot/contao-list-grid-bundle",
     "license": "LGPL-3.0-or-later",
+    "homepage": "https://github.com/heimrichhannot/contao-list-grid-bundle",
     "authors": [
         {
             "name": "Heimrich & Hannot",
             "email": "digitales@heimrich-hannot.de",
-            "homepage": "http://www.heimrich-hannot.de",
+            "homepage": "https://www.heimrich-hannot.de",
             "role": "Developer"
         }
     ],
