@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2019-07-22
+
+### Added
+- override listgrid in list configuration
+
 ## [0.2.0] - 2018-10-30
 
 ### Added

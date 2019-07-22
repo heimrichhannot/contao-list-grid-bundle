@@ -10,6 +10,8 @@
  */
 
 $GLOBALS['TL_LANG']['tl_list_config']['listGrid_legend'] = 'Listenraster Konfiguration';
+$GLOBALS['TL_LANG']['tl_list_config']['overrideListGrid_legend'] = 'Listenraster Konfiguration';
+
 
 $GLOBALS['TL_LANG']['tl_list_config']['listGrid'][0] = 'Listenraster auswählen';
 $GLOBALS['TL_LANG']['tl_list_config']['listGrid'][1] = 'Wählen Sie ein Listenraster aus';

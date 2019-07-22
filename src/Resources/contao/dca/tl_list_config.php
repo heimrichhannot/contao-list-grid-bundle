@@ -32,3 +32,14 @@ $arrFields = [
  * Palettes
  */
 $dc['fields'] = array_merge($dc['fields'], $arrFields);
+
+\Contao\System::getContainer()->get('huh.utils.dca')->addOverridableFields(
+    ['listGrid'],
+    'tl_list_config',
+    'tl_list_config',
+    [
+        'checkboxDcaEvalOverride' => [
+            'tl_class' => 'w50 clr',
+        ],
+    ]
+);
