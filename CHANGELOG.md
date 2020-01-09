@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2020-01-09
+
+### Fixed
+- error on setting template name in list element when there are multiple lists with listgrids on one page
+
 ## [0.3.0] - 2019-07-22
 
 ### Added

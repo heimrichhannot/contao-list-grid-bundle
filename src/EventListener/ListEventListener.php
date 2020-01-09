@@ -74,6 +74,8 @@ class ListEventListener
         if (!$this->templateItems) {
             return;
         }
+
+	$this->templatePlaceholders = [];
         foreach ($this->templateItems as $item) {
             if (ContentListGridPlaceholder::NAME == $item->type) {
                 $this->templatePlaceholders[] = $item;
