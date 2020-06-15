@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -75,7 +75,7 @@ class ListEventListener
             return;
         }
 
-	$this->templatePlaceholders = [];
+        $this->templatePlaceholders = [];
         foreach ($this->templateItems as $item) {
             if (ContentListGridPlaceholder::NAME == $item->type) {
                 $this->templatePlaceholders[] = $item;

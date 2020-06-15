@@ -1,4 +1,7 @@
 services:
+  _defaults:
+    public: true
+
   huh.listgrid.listener.callbacks:
     class: HeimrichHannot\ContaoListGridBundle\EventListener\CallbackListener
     arguments: ['@contao.framework']

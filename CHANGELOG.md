@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.2] - 2020-06-15
+
+### Changed
+- set services public
+
 ## [0.3.1] - 2020-01-09
 
 ### Fixed
