@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2021-01-06
+- fixed options_callback at listGrid_placeholderTemplate
+
 ## [0.3.2] - 2020-06-15
 
 ### Changed
