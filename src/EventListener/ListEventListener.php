@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -103,7 +103,7 @@ class ListEventListener
         $event->setTemplateName($placeholder->listGrid_placeholderTemplate);
 
         $templateData = $event->getTemplateData();
-        $listImageConfig = $event->getItem()->getManager()->getListConfigElementRegistry()->findOneBy(['tl_list_config_element.pid=?', 'tl_list_config_element.type=?'], [$event->getItem()->getManager()->getListConfig()->id, ListConfigElement::TYPE_IMAGE]);
+        $listImageConfig = $event->getItem()->getManager()->getListConfigElementRegistry()->findOneBy(['pid=?', 'type=?'], [$event->getItem()->getManager()->getListConfig()->id, ListConfigElement::TYPE_IMAGE]);
         if (!$listImageConfig) {
             return;
         }
