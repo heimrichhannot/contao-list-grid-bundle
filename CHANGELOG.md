@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.2] - 2021-04-15
+- fixed context of EventListener
+
 ## [0.4.1] - 2021-02-09
 - fixed ambiguous pid issue in ListEventListener
 

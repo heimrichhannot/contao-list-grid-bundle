@@ -88,7 +88,7 @@ class ListEventListener
 
     public function onHuhListEventItemBeforeRender(ListBeforeRenderItemEvent $event)
     {
-        if (!$this->config || empty($this->templatePlaceholders)) {
+        if ($event->getItem()->getManager()->getListConfig()->listGrid < 1 || !$this->config || empty($this->templatePlaceholders)) {
             return;
         }
         if (!$placeholder = current($this->templatePlaceholders)) {
