@@ -17,7 +17,7 @@ This bundle is an extension to [Contao List Bundle](https://github.com/heimrichh
 
 * PHP 7.1 or higher
 * Contao 4.4 or higher
-* [Contao List Bundle](https://github.com/heimrichhannot/contao-list-bundle) 1.0.0-beta41 or higher
+* [Contao List Bundle](https://github.com/heimrichhannot/contao-list-bundle)
 
 ## Usage
 
