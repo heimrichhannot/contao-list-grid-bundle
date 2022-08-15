@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2020 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -12,7 +12,6 @@ use Contao\BackendTemplate;
 use Contao\ContentElement;
 use Contao\StringUtil;
 use Contao\System;
-use Patchwork\Utf8;
 
 class ContentListGridPlaceholder extends ContentElement
 {
@@ -25,7 +24,7 @@ class ContentListGridPlaceholder extends ContentElement
             $trans = $container->get('translator');
             $template = $container->get('contao.framework')->createInstance(BackendTemplate::class, ['be_listgrid_placeholder']);
             $template->setData($this->objModel->row());
-            $template->wildcard = '### '.Utf8::strtoupper($trans->trans('huh.listgrid.cte.placeholder')).' ###';
+            $template->wildcard = '### '.strtoupper($trans->trans('huh.listgrid.cte.placeholder')).' ###';
 
             if ($this->size = !'') {
                 $arrImageSizes = System::getContainer()->get('contao.image.image_sizes')->getAllOptions();

@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.4] - 2022-08-15
+- Removed: usage of Patchwork/Utf8
+
 ## [0.4.3] - 2022-03-02
 - Changed: allow php 8
 
