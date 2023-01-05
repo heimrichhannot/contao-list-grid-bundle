@@ -8,28 +8,24 @@
 
 namespace HeimrichHannot\ContaoListGridBundle\EventListener;
 
-use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
+use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\Model\Collection;
 use HeimrichHannot\ContaoListGridBundle\Model\ListGridModel;
 
 class CallbackListener
 {
-    /**
-     * @var ContaoFrameworkInterface
-     */
-    private $framework;
+    private ContaoFramework $framework;
 
-    public function __construct(ContaoFrameworkInterface $framework)
+    public function __construct(ContaoFramework $framework)
     {
         $this->framework = $framework;
     }
 
     /**
-     * Returns list grid configurations.
-     *
-     * @return array
+     * @Callback(table="tl_list_config", target="fields.listGrid.options")
      */
-    public function getListGridConfigurations()
+    public function onListGridOptionsCallback(): array
     {
         $options = [];
 

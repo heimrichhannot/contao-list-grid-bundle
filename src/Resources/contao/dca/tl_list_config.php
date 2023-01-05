@@ -16,22 +16,13 @@ $dc['palettes']['default'] = str_replace('{sorting_legend}', '{listGrid_legend},
 /**
  * Fields
  */
-$arrFields = [
-    'listGrid' => [
-        'label'            => &$GLOBALS['TL_LANG']['tl_list_config']['listGrid'],
-        'exclude'          => true,
-        'inputType'        => 'select',
-        'options_callback' => ['huh.listgrid.listener.callbacks', 'getListGridConfigurations'],
-        'reference'        => &$GLOBALS['TL_LANG']['tl_module'],
-        'eval'             => ['includeBlankOption' => true, 'tl_class' => 'w50'],
-        'sql'              => "int(10) unsigned NOT NULL default '0'",
-    ],
+$dc['fields']['listGrid'] = [
+    'exclude'   => true,
+    'inputType' => 'select',
+    'reference' => &$GLOBALS['TL_LANG']['tl_module'],
+    'eval'      => ['includeBlankOption' => true, 'tl_class' => 'w50'],
+    'sql'       => "int(10) unsigned NOT NULL default '0'",
 ];
-
-/**
- * Palettes
- */
-$dc['fields'] = array_merge($dc['fields'], $arrFields);
 
 \Contao\System::getContainer()->get('huh.utils.dca')->addOverridableFields(
     ['listGrid'],

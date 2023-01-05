@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.5] - 2023-01-05
+- Added: support for list bundle pagination mixed content
+- Changed: min php version is now 7.4
+- Changed: min contao version is now 4.9
+- Changed: some code modernization
+- Changed: removed test setup
+- Fixed: added missing dependencies
+
 ## [0.4.4] - 2022-08-15
 - Removed: usage of Patchwork/Utf8
 

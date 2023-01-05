@@ -1,14 +1,14 @@
 services:
   _defaults:
     public: true
+    bind:
+      $logger: '@monolog.logger.contao'
+
+  HeimrichHannot\ContaoListGridBundle\:
+    resource: '../../{EventListener}/'
+    autowire: true
+    autoconfigure: true
 
   huh.listgrid.listener.callbacks:
     class: HeimrichHannot\ContaoListGridBundle\EventListener\CallbackListener
     arguments: ['@contao.framework']
-  huh.listgrid.listener.list_events:
-    class: HeimrichHannot\ContaoListGridBundle\EventListener\ListEventListener
-    tags:
-      - { name: kernel.event_listener, event: huh.list.event.list_after_parse_items }
-      - { name: kernel.event_listener, event: huh.list.event.list_compile }
-      - { name: kernel.event_listener, event: huh.list.event.item_before_render }
-    arguments: ['@contao.framework', '@monolog.logger.contao', '@huh.utils.image']
